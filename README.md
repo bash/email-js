@@ -24,4 +24,5 @@ Email('<email>')
 const Email = require('email-js');
 
 console.log(Email('ruby@fog.im')); // => Email(ruby@fog.im)
+Email('a') // => TypeError
 ```

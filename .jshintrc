@@ -1,0 +1,10 @@
+{
+  "esnext": true,
+  "curly": true,
+  "noarg": true,
+  "nonew": true,
+  "undef": true,
+  "browser": true,
+  "browserify": true,
+  "mocha": true
+}

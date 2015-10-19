@@ -13,7 +13,7 @@ module.exports = Email;
 const email = Symbol('email');
 
 /**
- * Originally from
+ * Source
  * https://github.com/WebKit/webkit/blob/4226b9741095267eccf15899533703c050477190/Source/WebCore/html/EmailInputType.cpp
  *
  * Copyright (C) 2009 Michelangelo De Simone <micdesim@gmail.com>
@@ -62,8 +62,16 @@ Email.prototype.toString = function() {
 
 /**
  *
+ * @param {number} _
+ * @param {{}} options
  * @returns {string}
  */
-Email.prototype.inspect = function() {
-  return `Email(${this})`;
+Email.prototype.inspect = function(_, options) {
+  let str = `Email(${this})`;
+
+  if (options && options.colors) {
+    return options.stylize(str, 'string');
+  }
+
+  return str;
 };

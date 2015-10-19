@@ -3,6 +3,7 @@
  */
 
 var assert = require('assert'),
+    util = require('util'),
     Email  = require('../index');
 
 describe('Email', function() {
@@ -23,4 +24,8 @@ describe('Email', function() {
   it('is inspectable', function() {
     assert.equal('Email(ruby@fog.im)', Email('ruby@fog.im').inspect());
   });
+
+  it('has a colored inspect', function(){
+    assert.equal(util.inspect(Email('ruby@fog.im'), { colors: true }), '\u001b[32mEmail(ruby@fog.im)\u001b[39m');
+  })
 });

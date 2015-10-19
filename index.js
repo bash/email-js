@@ -27,7 +27,8 @@ const regex = /^[a-z0-9!#$%&'*+/=?^_`\{|\}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i;
  *
  * @param {string} string
  * @throws TypeError
- * @constructor
+ *
+ * @returns {Email}
  */
 function Email(string) {
   if (!(this instanceof Email)) {

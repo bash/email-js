@@ -62,6 +62,24 @@ Email.prototype.toString = function() {
 
 /**
  *
+ * Returns the domain part of the email.
+ * @returns {string}
+ */
+Email.prototype.getDomain = function() {
+  return this[email].split('@')[1];
+};
+
+/**
+ *
+ * Returns the local part of the email.
+ * @returns {string}
+ */
+Email.prototype.getLocal = function() {
+  return this[email].split('@')[0];
+};
+
+/**
+ *
  * @param {number} _
  * @param {{}} options
  * @returns {string}
@@ -75,3 +93,9 @@ Email.prototype.inspect = function(_, options) {
 
   return str;
 };
+
+Object.defineProperty(Email.prototype, 'length', {
+  get: function() {
+    return this[email].length;
+  }
+});

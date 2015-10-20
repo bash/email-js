@@ -3,13 +3,10 @@
  */
 
 var assert = require('assert'),
-    util = require('util'),
+    util   = require('util'),
     Email  = require('../index');
 
 describe('Email', function() {
-  it('emails can be converted to a string', function() {
-    assert.equal(Email('cake@example.org') + '', 'cake@example.org');
-  });
 
   it('throws a typerror on invalid emails', function() {
     assert.throws(function() {
@@ -21,11 +18,39 @@ describe('Email', function() {
     assert(Email('webmaster@example.com') instanceof Email);
   });
 
-  it('is inspectable', function() {
-    assert.equal('Email(ruby@fog.im)', Email('ruby@fog.im').inspect());
+  describe('.toString()', function() {
+    it('emails can be converted to a string', function() {
+      assert.equal(Email('cake@example.org') + '', 'cake@example.org');
+    });
   });
 
-  it('has a colored inspect', function(){
-    assert.equal(util.inspect(Email('ruby@fog.im'), { colors: true }), '\u001b[32mEmail(ruby@fog.im)\u001b[39m');
-  })
+  describe('.inspect()', function() {
+    it('is inspectable', function() {
+      assert.equal('Email(ruby@fog.im)', Email('ruby@fog.im').inspect());
+    });
+
+    it('has a colored inspect', function() {
+      assert.equal(util.inspect(Email('ruby@fog.im'), { colors: true }), '\u001b[32mEmail(ruby@fog.im)\u001b[39m');
+    });
+  });
+
+  describe('.length', function() {
+    it('returns the length', function() {
+      assert.equal(Email('cake@example.org').length, 16);
+    });
+  });
+
+  describe('.getLocal()', function(){
+    it('returns the local part', function(){
+      assert.equal(Email('cake@example.org').getLocal(), 'cake');
+      assert.equal(Email('cake.lover@gmail.com').getLocal(), 'cake.lover');
+    });
+  });
+
+  describe('.getDomain()', function(){
+    it('returns the domain', function(){
+      assert.equal(Email('cake@example.org').getDomain(), 'example.org');
+      assert.equal(Email('cake.lover@gmail.com').getDomain(), 'gmail.com');
+    });
+  });
 });

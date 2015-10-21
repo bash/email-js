@@ -74,6 +74,13 @@ EmailAddress.prototype.toString = function() {
 };
 
 /**
+ * @returns {string}
+ */
+EmailAddress.prototype.toJSON = function() {
+  return this.toString();
+};
+
+/**
  *
  * Returns the domain part of the email.
  * @returns {string}

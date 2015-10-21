@@ -32,6 +32,12 @@ describe('EmailAddress', function() {
     });
   });
 
+  describe('#toJSON', function(){
+	it('serializes as a string', function(){
+	  assert.equal(JSON.stringify(EmailAddress('cake@localhost')), '"cake@localhost"');
+	});
+  });
+
   describe('#inspect()', function() {
     it('is inspectable', function() {
       assert.equal('EmailAddress(ruby@fog.im)', EmailAddress('ruby@fog.im').inspect());

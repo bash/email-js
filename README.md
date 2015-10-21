@@ -27,3 +27,42 @@ const EmailAddress = require('email-js');
 console.log(EmailAddress('ruby@fog.im')); // => EmailAddress(ruby@fog.im)
 EmailAddress('a') // => TypeError
 ```
+
+## API
+
+### \.isValid()
+Returns true if the email is valid.
+The email address is validated on construction by Webkit's regex.  
+
+```js
+console.log(EmailAddress.isValid('root@localhost')) // => true
+```
+
+
+### \#getDomain()
+Returns the domain part of the email.
+
+```js
+console.log(EmailAddress('root@localhost').getDomain()) // => 'localhost'
+```
+
+### \#getLocal()
+Returns the local part of the email.
+
+```js
+console.log(EmailAddress('root@localhost').getLocal()) // => 'root'
+```
+
+### \#toString()
+Converts the email address back to a string.
+
+```js
+console.log(EmailAddress('root@localhost').toString()) // => 'root@localhost'
+```
+
+### \#length
+Returns the email's length.
+
+```js
+console.log(EmailAddress('root@localhost').length) // => 14
+```

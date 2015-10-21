@@ -1,7 +1,7 @@
 {
   "name": "email-js",
   "version": "1.1.0",
-  "description": "An immutable value - object for emails",
+  "description": "An immutable value - object for email addresses",
   "main": "index.js",
   "directories": {
     "test": "test"

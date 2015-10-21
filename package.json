@@ -1,6 +1,6 @@
 {
   "name": "email-js",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "An immutable value - object for email addresses",
   "main": "index.js",
   "directories": {
@@ -25,5 +25,8 @@
     "istanbul": "^0.3.22",
     "mocha": "^2.3.3",
     "mocha-lcov-reporter": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=v4.2.1"
   }
 }

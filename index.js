@@ -35,7 +35,7 @@ function EmailAddress(string) {
     return new EmailAddress(string);
   }
 
-  if (!regex.test(string)) {
+  if (!EmailAddress.isValid(string)) {
     throw new TypeError('invalid email format');
   }
 
@@ -51,6 +51,16 @@ function EmailAddress(string) {
  * @type {RegExp}
  */
 EmailAddress.EMAIL_REGEX = regex;
+
+/**
+ * Returns true if the email provided has a valid format.
+ *
+ * @param {string} email
+ * @returns {boolean}
+ */
+EmailAddress.isValid = function(email) {
+  return regex.test(email);
+};
 
 /**
  *

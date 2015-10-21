@@ -6,7 +6,7 @@ var assert = require('assert'),
     util   = require('util'),
     EmailAddress  = require('../index');
 
-describe('Email', function() {
+describe('EmailAddress', function() {
 
   it('throws a typerror on invalid emails', function() {
     assert.throws(function() {
@@ -18,13 +18,13 @@ describe('Email', function() {
     assert(EmailAddress('webmaster@example.com') instanceof EmailAddress);
   });
 
-  describe('.toString()', function() {
+  describe('#toString()', function() {
     it('emails can be converted to a string', function() {
       assert.equal(EmailAddress('cake@example.org') + '', 'cake@example.org');
     });
   });
 
-  describe('.inspect()', function() {
+  describe('#inspect()', function() {
     it('is inspectable', function() {
       assert.equal('EmailAddress(ruby@fog.im)', EmailAddress('ruby@fog.im').inspect());
     });
@@ -34,23 +34,32 @@ describe('Email', function() {
     });
   });
 
-  describe('.length', function() {
+  describe('#length', function() {
     it('returns the length', function() {
       assert.equal(EmailAddress('cake@example.org').length, 16);
     });
   });
 
-  describe('.getLocal()', function(){
+  describe('#getLocal()', function(){
     it('returns the local part', function(){
       assert.equal(EmailAddress('cake@example.org').getLocal(), 'cake');
       assert.equal(EmailAddress('cake.lover@gmail.com').getLocal(), 'cake.lover');
     });
   });
 
-  describe('.getDomain()', function(){
+  describe('#getDomain()', function(){
     it('returns the domain', function(){
       assert.equal(EmailAddress('cake@example.org').getDomain(), 'example.org');
       assert.equal(EmailAddress('cake.lover@gmail.com').getDomain(), 'gmail.com');
+    });
+  });
+
+  describe('.isValid()', function(){
+    it('validates the email', function(){
+      assert.equal(EmailAddress.isValid('cake@example.org'), true);
+      assert.equal(EmailAddress.isValid('root@localhost'), true);
+      assert.equal(EmailAddress.isValid('root'), false);
+      assert.equal(EmailAddress.isValid('@localhost'), false);
     });
   });
 });

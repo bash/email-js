@@ -27,7 +27,7 @@ EmailAddress('a') // => TypeError
 
 ## API
 
-### \.isValid()
+### \.isValid(email: string) =\> boolean
 Returns true if the email is valid.
 The email address is validated on construction by Webkit's regex.  
 
@@ -36,28 +36,28 @@ console.log(EmailAddress.isValid('root@localhost')) // => true
 ```
 
 
-### \#getDomain()
+### \#getDomain() =\> string
 Returns the domain part of the email.
 
 ```js
 console.log(EmailAddress('root@localhost').getDomain()) // => 'localhost'
 ```
 
-### \#getLocal()
+### \#getLocal() =\> string
 Returns the local part of the email.
 
 ```js
 console.log(EmailAddress('root@localhost').getLocal()) // => 'root'
 ```
 
-### \#toString()
+### \#toString() =\> string
 Converts the email address back to a string.
 
 ```js
 console.log(EmailAddress('root@localhost').toString()) // => 'root@localhost'
 ```
 
-### \#length
+### \#length =\> number
 Returns the email's length.
 
 ```js

@@ -2,6 +2,8 @@
  * (c) 2015 Ruben Schmidmeister <ruby@fog.im>
  */
 
+'use strict';
+
 var assert = require('assert'),
     util   = require('util'),
     EmailAddress  = require('../index');
@@ -11,6 +13,12 @@ describe('EmailAddress', function() {
   it('throws a typerror on invalid emails', function() {
     assert.throws(function() {
       EmailAddress('some_asdflkj@')
+    }, TypeError);
+  });
+
+  it('returns a frozen instance', function(){
+    assert.throws(function(){
+      EmailAddress('root@localhost').a = 10;
     }, TypeError);
   });
 

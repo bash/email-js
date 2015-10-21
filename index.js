@@ -24,6 +24,7 @@ const email = Symbol('email');
 const regex = /^[a-z0-9!#$%&'*+/=?^_`\{|\}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i;
 
 /**
+ * Returns a frozen instance of EmailAddress
  *
  * @param {string} string
  * @throws TypeError
@@ -44,6 +45,8 @@ function EmailAddress(string) {
    * @type {string}
    */
   this[email] = string;
+
+  return Object.freeze(this);
 }
 
 /**

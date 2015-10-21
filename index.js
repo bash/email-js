@@ -4,7 +4,7 @@
 
 'use strict';
 
-module.exports = Email;
+module.exports = EmailAddress;
 
 /**
  *
@@ -28,11 +28,11 @@ const regex = /^[a-z0-9!#$%&'*+/=?^_`\{|\}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i;
  * @param {string} string
  * @throws TypeError
  *
- * @returns {Email}
+ * @returns {EmailAddress}
  */
-function Email(string) {
-  if (!(this instanceof Email)) {
-    return new Email(string);
+function EmailAddress(string) {
+  if (!(this instanceof EmailAddress)) {
+    return new EmailAddress(string);
   }
 
   if (!regex.test(string)) {
@@ -50,13 +50,13 @@ function Email(string) {
  *
  * @type {RegExp}
  */
-Email.EMAIL_REGEX = regex;
+EmailAddress.EMAIL_REGEX = regex;
 
 /**
  *
  * @returns {string}
  */
-Email.prototype.toString = function() {
+EmailAddress.prototype.toString = function() {
   return this[email];
 };
 
@@ -65,7 +65,7 @@ Email.prototype.toString = function() {
  * Returns the domain part of the email.
  * @returns {string}
  */
-Email.prototype.getDomain = function() {
+EmailAddress.prototype.getDomain = function() {
   return this[email].split('@')[1];
 };
 
@@ -74,7 +74,7 @@ Email.prototype.getDomain = function() {
  * Returns the local part of the email.
  * @returns {string}
  */
-Email.prototype.getLocal = function() {
+EmailAddress.prototype.getLocal = function() {
   return this[email].split('@')[0];
 };
 
@@ -84,8 +84,8 @@ Email.prototype.getLocal = function() {
  * @param {{}} options
  * @returns {string}
  */
-Email.prototype.inspect = function(_, options) {
-  let str = `Email(${this})`;
+EmailAddress.prototype.inspect = function(_, options) {
+  let str = `EmailAddress(${this})`;
 
   if (options && options.colors) {
     return options.stylize(str, 'string');
@@ -94,7 +94,7 @@ Email.prototype.inspect = function(_, options) {
   return str;
 };
 
-Object.defineProperty(Email.prototype, 'length', {
+Object.defineProperty(EmailAddress.prototype, 'length', {
   get: function() {
     return this[email].length;
   }

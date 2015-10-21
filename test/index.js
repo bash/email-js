@@ -4,53 +4,53 @@
 
 var assert = require('assert'),
     util   = require('util'),
-    Email  = require('../index');
+    EmailAddress  = require('../index');
 
 describe('Email', function() {
 
   it('throws a typerror on invalid emails', function() {
     assert.throws(function() {
-      Email('some_asdflkj@')
+      EmailAddress('some_asdflkj@')
     }, TypeError);
   });
 
   it('returns an instance of Email', function() {
-    assert(Email('webmaster@example.com') instanceof Email);
+    assert(EmailAddress('webmaster@example.com') instanceof EmailAddress);
   });
 
   describe('.toString()', function() {
     it('emails can be converted to a string', function() {
-      assert.equal(Email('cake@example.org') + '', 'cake@example.org');
+      assert.equal(EmailAddress('cake@example.org') + '', 'cake@example.org');
     });
   });
 
   describe('.inspect()', function() {
     it('is inspectable', function() {
-      assert.equal('Email(ruby@fog.im)', Email('ruby@fog.im').inspect());
+      assert.equal('EmailAddress(ruby@fog.im)', EmailAddress('ruby@fog.im').inspect());
     });
 
     it('has a colored inspect', function() {
-      assert.equal(util.inspect(Email('ruby@fog.im'), { colors: true }), '\u001b[32mEmail(ruby@fog.im)\u001b[39m');
+      assert.equal(util.inspect(EmailAddress('ruby@fog.im'), { colors: true }), '\u001b[32mEmailAddress(ruby@fog.im)\u001b[39m');
     });
   });
 
   describe('.length', function() {
     it('returns the length', function() {
-      assert.equal(Email('cake@example.org').length, 16);
+      assert.equal(EmailAddress('cake@example.org').length, 16);
     });
   });
 
   describe('.getLocal()', function(){
     it('returns the local part', function(){
-      assert.equal(Email('cake@example.org').getLocal(), 'cake');
-      assert.equal(Email('cake.lover@gmail.com').getLocal(), 'cake.lover');
+      assert.equal(EmailAddress('cake@example.org').getLocal(), 'cake');
+      assert.equal(EmailAddress('cake.lover@gmail.com').getLocal(), 'cake.lover');
     });
   });
 
   describe('.getDomain()', function(){
     it('returns the domain', function(){
-      assert.equal(Email('cake@example.org').getDomain(), 'example.org');
-      assert.equal(Email('cake.lover@gmail.com').getDomain(), 'gmail.com');
+      assert.equal(EmailAddress('cake@example.org').getDomain(), 'example.org');
+      assert.equal(EmailAddress('cake.lover@gmail.com').getDomain(), 'gmail.com');
     });
   });
 });

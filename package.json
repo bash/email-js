@@ -3,6 +3,7 @@
   "version": "1.4.0",
   "description": "An immutable value - object for email addresses",
   "main": "index.js",
+  "types": "index.d.ts",
   "directories": {
     "test": "test"
   },

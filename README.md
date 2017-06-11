@@ -4,6 +4,9 @@
 [![Coverage Status](https://coveralls.io/repos/bash/email-js/badge.svg?branch=master&service=github)](https://coveralls.io/github/bash/email-js?branch=master)
 [![Inline docs](http://inch-ci.org/github/bash/email-js.svg?branch=master&style=shields)](http://inch-ci.org/github/bash/email-js)
 
+> Version 1.x can be found here: https://github.com/bash/email-js/tree/v1.4.0  
+> `npm install --save email-js@1`
+
 ## Installation
 
 ```bash
@@ -12,54 +15,35 @@ npm install --save email-js
 
 ## Usage
 
-```javascript  
-EmailAddress('<email>')
-```
-
-## Example
-
 ```javascript
-const EmailAddress = require('email-js');
+const { isValidEmail, getDomainPart, getLocalPart } = require('email-js');
 
-console.log(EmailAddress('ruby@fog.im')); // => EmailAddress(ruby@fog.im)
-EmailAddress('a') // => TypeError
+console.log(isValidEmail('robot@example.com')); // => true
+console.log(getDomainPart('robot@example.com')); // => example.com
+console.log(getLocalPart('robot@example.com')); // => robot
 ```
 
 ## API
 
-### \.isValid(email: ```string```) =\> ```boolean```
+### isValidEmail(email: ```string```) =\> ```boolean```
 Returns true if the email is valid.
-The email address is validated on construction by Webkit's regex.  
+The address is validated on by the same regex used by Webkit.
 
 ```js
-console.log(EmailAddress.isValid('root@localhost')) // => true
+isValidEmail('root@localhost') // => true
 ```
 
 
-### \#getDomain() =\> ```string```
+### getDomainPart(email: ```string```) =\> ```string```
 Returns the domain part of the email.
 
 ```js
-console.log(EmailAddress('root@localhost').getDomain()) // => 'localhost'
+getDomainPart('root@localhost') // => 'localhost'
 ```
 
-### \#getLocal() =\> ```string```
+### getLocalPart(email: ```string```) =\> ```string```
 Returns the local part of the email.
 
 ```js
-console.log(EmailAddress('root@localhost').getLocal()) // => 'root'
-```
-
-### \#toString() =\> ```string```
-Converts the email address back to a string.
-
-```js
-console.log(EmailAddress('root@localhost').toString()) // => 'root@localhost'
-```
-
-### \#length =\> ```number```
-Returns the email's length.
-
-```js
-console.log(EmailAddress('root@localhost').length) // => 14
+getLocalPart('root@localhost') // => 'root'
 ```

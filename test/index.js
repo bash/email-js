@@ -1,79 +1,31 @@
-/**
- * (c) 2015 Ruben Schmidmeister <ruby@fog.im>
- */
+'use strict'
 
-'use strict';
+/* eslint-env mocha */
 
-var assert = require('assert'),
-    util   = require('util'),
-    EmailAddress  = require('../index');
+const assert = require('assert')
+const { isValidEmail, getDomainPart, getLocalPart } = require('../index')
 
-describe('EmailAddress', function() {
+describe('email-js', function () {
+  describe('getLocalPart()', function () {
+    it('returns the local part', function () {
+      assert.equal(getLocalPart('cake@example.org'), 'cake')
+      assert.equal(getLocalPart('cake.tower@gmail.com'), 'cake.tower')
+    })
+  })
 
-  it('throws a typerror on invalid emails', function() {
-    assert.throws(function() {
-      EmailAddress('some_asdflkj@')
-    }, TypeError);
-  });
+  describe('getDomainPart()', function () {
+    it('returns the domain', function () {
+      assert.equal(getDomainPart('cake@example.org'), 'example.org')
+      assert.equal(getDomainPart('cake.tower@gmail.com'), 'gmail.com')
+    })
+  })
 
-  it('returns a frozen instance', function(){
-    assert.throws(function(){
-      EmailAddress('root@localhost').a = 10;
-    }, TypeError);
-  });
-
-  it('returns an instance of Email', function() {
-    assert(EmailAddress('webmaster@example.com') instanceof EmailAddress);
-  });
-
-  describe('#toString()', function() {
-    it('emails can be converted to a string', function() {
-      assert.equal(EmailAddress('cake@example.org') + '', 'cake@example.org');
-    });
-  });
-
-  describe('#toJSON', function(){
-	it('serializes as a string', function(){
-	  assert.equal(JSON.stringify(EmailAddress('cake@localhost')), '"cake@localhost"');
-	});
-  });
-
-  describe('#inspect()', function() {
-    it('is inspectable', function() {
-      assert.equal('EmailAddress(ruby@fog.im)', EmailAddress('ruby@fog.im').inspect());
-    });
-
-    it('has a colored inspect', function() {
-      assert.equal(util.inspect(EmailAddress('ruby@fog.im'), { colors: true }), '\u001b[32mEmailAddress(ruby@fog.im)\u001b[39m');
-    });
-  });
-
-  describe('#length', function() {
-    it('returns the length', function() {
-      assert.equal(EmailAddress('cake@example.org').length, 16);
-    });
-  });
-
-  describe('#getLocal()', function(){
-    it('returns the local part', function(){
-      assert.equal(EmailAddress('cake@example.org').getLocal(), 'cake');
-      assert.equal(EmailAddress('cake.lover@gmail.com').getLocal(), 'cake.lover');
-    });
-  });
-
-  describe('#getDomain()', function(){
-    it('returns the domain', function(){
-      assert.equal(EmailAddress('cake@example.org').getDomain(), 'example.org');
-      assert.equal(EmailAddress('cake.lover@gmail.com').getDomain(), 'gmail.com');
-    });
-  });
-
-  describe('.isValid()', function(){
-    it('validates the email', function(){
-      assert.equal(EmailAddress.isValid('cake@example.org'), true);
-      assert.equal(EmailAddress.isValid('root@localhost'), true);
-      assert.equal(EmailAddress.isValid('root'), false);
-      assert.equal(EmailAddress.isValid('@localhost'), false);
-    });
-  });
-});
+  describe('isValidEmail()', function () {
+    it('validates the email', function () {
+      assert.equal(isValidEmail('cake@example.org'), true)
+      assert.equal(isValidEmail('root@localhost'), true)
+      assert.equal(isValidEmail('root'), false)
+      assert.equal(isValidEmail('@localhost'), false)
+    })
+  })
+})

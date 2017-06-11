@@ -1,16 +1,4 @@
-/**
- * (c) 2015 Ruben Schmidmeister <ruby@fog.im>
- */
-
-'use strict';
-
-module.exports = EmailAddress;
-
-/**
- *
- * @type {Symbol}
- */
-const email = Symbol('email');
+'use strict'
 
 /**
  * Source
@@ -21,101 +9,30 @@ const email = Symbol('email');
  *
  * @type {RegExp}
  */
-const regex = /^[a-z0-9!#$%&'*+/=?^_`\{|\}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i;
+const regex = /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i
 
 /**
- * Returns a frozen instance of EmailAddress
- *
- * @param {string} string
- * @throws TypeError
- *
- * @returns {EmailAddress}
- */
-function EmailAddress(string) {
-  if (!(this instanceof EmailAddress)) {
-    return new EmailAddress(string);
-  }
-
-  if (!EmailAddress.isValid(string)) {
-    throw new TypeError('invalid email format');
-  }
-
-  /**
-   *
-   * @type {string}
-   */
-  this[email] = string;
-
-  return Object.freeze(this);
-}
-
-/**
- *
- * @type {RegExp}
- */
-EmailAddress.EMAIL_REGEX = regex;
-
-/**
- * Returns true if the email provided has a valid format.
  *
  * @param {string} email
  * @returns {boolean}
  */
-EmailAddress.isValid = function(email) {
-  return regex.test(email);
-};
-
-/**
- *
- * @returns {string}
- */
-EmailAddress.prototype.toString = function() {
-  return this[email];
-};
-
-/**
- * @returns {string}
- */
-EmailAddress.prototype.toJSON = function() {
-  return this.toString();
-};
-
-/**
- *
- * Returns the domain part of the email.
- * @returns {string}
- */
-EmailAddress.prototype.getDomain = function() {
-  return this[email].split('@')[1];
-};
+const isValidEmail = (email) => regex.test(email)
 
 /**
  *
  * Returns the local part of the email.
+ *
+ * @param {string} email
  * @returns {string}
  */
-EmailAddress.prototype.getLocal = function() {
-  return this[email].split('@')[0];
-};
+const getLocalPart = (email) => email.split('@')[0]
 
 /**
+ * Returns the domain part of the email.
  *
- * @param {number} _
- * @param {{}} options
+ * @param {string} email
  * @returns {string}
  */
-EmailAddress.prototype.inspect = function(_, options) {
-  let str = `EmailAddress(${this})`;
+const getDomainPart = (email) => email.split('@')[1]
 
-  if (options && options.colors) {
-    return options.stylize(str, 'string');
-  }
-
-  return str;
-};
-
-Object.defineProperty(EmailAddress.prototype, 'length', {
-  get: function() {
-    return this[email].length;
-  }
-});
+module.exports = { isValidEmail, getDomainPart, getLocalPart }

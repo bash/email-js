@@ -1,7 +1,7 @@
 {
   "name": "email-js",
-  "version": "1.4.0",
-  "description": "An immutable value - object for email addresses",
+  "version": "2.0.0",
+  "description": "A collection of helpers for email addresses",
   "main": "index.js",
   "types": "index.d.ts",
   "directories": {

@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/bash/email-js",
   "devDependencies": {
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.0.4",
     "istanbul": "^0.4.5",
     "mocha": "^6.1.4",
     "mocha-lcov-reporter": "^1.0.0",

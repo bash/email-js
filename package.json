@@ -23,9 +23,9 @@
   "homepage": "https://github.com/bash/email-js",
   "devDependencies": {
     "coveralls": "^3.0.9",
-    "mocha": "^6.2.2",
+    "mocha": "^7.1.0",
     "nyc": "^15.0.0",
-    "standard": "^14.0.2"
+    "standard": "^14.3.3"
   },
   "engines": {
     "node": ">=v4.2.1"

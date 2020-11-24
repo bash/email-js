@@ -18,5 +18,12 @@ jobs:
       name: Install Dependencies
     - run: yarn standard
       name: Run Standard
+    - run: yarn test
+      name: Run Tests
     - run: yarn coverage
-      name: Run Tests with Coverage
+      name: Generate Code Coverage
+    - name: Report Code Coverage
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        path-to-lcov: lcov.info

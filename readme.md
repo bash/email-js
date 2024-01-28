@@ -1,5 +1,4 @@
 # email-js
-![Node.js CI](https://github.com/bash/email-js/workflows/Node.js%20CI/badge.svg)
 [![npm version](https://badge.fury.io/js/email-js.svg)](https://badge.fury.io/js/email-js)
 [![Coverage Status](https://coveralls.io/repos/bash/email-js/badge.svg?branch=master&service=github)](https://coveralls.io/github/bash/email-js?branch=master)
 [![Inline docs](http://inch-ci.org/github/bash/email-js.svg?branch=master&style=shields)](http://inch-ci.org/github/bash/email-js)

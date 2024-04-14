@@ -14,13 +14,13 @@ jobs:
     - uses: actions/checkout@v2
     - name: Use Node.js
       uses: actions/setup-node@v1
-    - run: yarn install
+    - run: npm ci
       name: Install Dependencies
-    - run: yarn standard
+    - run: npx standard
       name: Run Standard
-    - run: yarn coverage
+    - run: npm run coverage
       name: Run Tests
-    - run: yarn nyc report --reporter=text-lcov > lcov.info
+    - run: npx nyc report --reporter=text-lcov > lcov.info
       name: Generate Code Coverage
     - name: Report Code Coverage
       uses: coverallsapp/github-action@master

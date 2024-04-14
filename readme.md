@@ -3,9 +3,6 @@
 [![Coverage Status](https://coveralls.io/repos/bash/email-js/badge.svg?branch=master&service=github)](https://coveralls.io/github/bash/email-js?branch=master)
 [![Inline docs](http://inch-ci.org/github/bash/email-js.svg?branch=master&style=shields)](http://inch-ci.org/github/bash/email-js)
 
-> Version 1.x can be found here: https://github.com/bash/email-js/tree/v1.4.0  
-> `npm install --save email-js@1`
-
 ## Installation
 
 ```bash

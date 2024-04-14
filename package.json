@@ -4,6 +4,10 @@
   "description": "A collection of helpers for email addresses",
   "main": "index.js",
   "types": "index.d.ts",
+  "files": [
+    "*.js",
+    "*.d.ts"
+  ],
   "directories": {
     "test": "test"
   },
